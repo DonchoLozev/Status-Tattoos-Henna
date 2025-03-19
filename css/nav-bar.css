@@ -1,0 +1,12 @@
+.btn-move {
+    margin: 1%; 
+    background-color: #fbd285;
+    border-radius: 3px;
+    transition: transform 1s;
+ }
+
+ .btn-move:hover{
+    transform: scale(1.2, 1.2);
+ }
+
+ 

@@ -1,0 +1,331 @@
+/* Нулиране на стиловете */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    
+}
+
+/* Основен контейнер */
+.split-container {
+    display: flex;
+    flex-direction: row; 
+    width: 100%;
+    height: 100vh;
+}
+
+/* Лявата страна със снимка */
+.left-side {
+    width: 50%;
+    height: 100vh;
+}
+
+.left-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Дясната част с ефект на влизане отдясно */
+.right-side {
+    width: 50%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    /* Прилагане на анимацията */
+    animation: slide-in-from-right 1s ease-out forwards;
+}
+
+/* Заглавие */
+.right-side h1 {
+    font-size: 80px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Times New Roman', serif;
+}
+
+/* Добавяме позиция relative към split-container */
+.split-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+    position: relative; /* Задължително, за да се позиционират стрелките вътре */
+}
+
+/* Контейнер за стрелките */
+.arrow-container {
+    position: absolute; /* Остава фиксиран в секцията */
+    bottom: 30px; /* Долу в секцията */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+/* Стрелки (бели, оформени като V-образни стрелки) */
+.arrow {
+    width: 40px;
+    height: 40px;
+    border-right: 6px solid white;
+    border-bottom: 6px solid white;
+    transform: rotate(45deg);
+    margin: 8px;
+    animation: arrow-move 1.5s infinite ease-in-out;
+}
+
+/* Анимация: движение само НАДОЛУ */
+@keyframes arrow-move {
+    0% { transform: rotate(45deg) translateY(0); opacity: 1; }
+    50% { transform: rotate(45deg) translateY(15px); opacity: 0.5; } /* Пада надолу */
+    100% { transform: rotate(45deg) translateY(0); opacity: 1; }
+}
+
+
+/* 📜 Секция с текст под снимките */
+.content-section {
+    padding: 50px 10%;
+    text-align: center;
+}
+
+.content-section h2 {
+    font-size: 40px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.content-section p {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 📱 Адаптивност за мобилни устройства */
+@media (max-width: 768px) {
+    .split-container {
+        flex-direction: column;
+    }
+
+    .left-side, .right-side {
+        width: 100%;
+        height: 50vh;
+    }
+
+    .right-side h1 {
+        font-size: 50px;
+    }
+}
+
+
+
+.img-left {
+    transform: translateX(-100%); /* Започва извън екрана отляво */
+    animation: slideInLeft 1s ease-out forwards;
+  }
+  
+  .img-right {
+    transform: translateX(100%); /* Започва извън екрана отдясно */
+    animation: slideInRight 1s ease-out forwards;
+  }
+  /* Анимации */
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+
+/* Анимация за появяване отдясно */
+@keyframes slide-in-from-right {
+    from{ 
+        opacity: 0;
+        transform: translateX(100%); /* Започва напълно извън екрана */
+    }
+    to { 
+        opacity: 1;
+        transform: translateX(0); /* Влиза в позиция */
+    }
+}
+
+  
+  .fade-in {
+    opacity: 0; /* Първоначално скрита */
+    animation: fadeIn 1.5s ease-in forwards;
+    animation-delay: 1s; /* Забавяне от 1 секундa */
+  }
+  
+  /* Анимация */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+
+
+
+
+
+/* Контейнер за всички въпроси */
+.faq-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Разстояние между контейнерите */
+    margin: 50px auto;
+    max-width: 1200px;
+}
+
+/* Отделен контейнер за всеки въпрос */
+.faq-item {
+    background-color: #000000;
+    border-radius: 10px;
+    border: 1px solid #fbd285;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    flex: 1 1 30%; /* Задава ширина така, че да има 3 на ред */
+    min-height: 220px; /* Гарантира минимална височина за равномерност */
+    text-align: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 30%; /* Гарантира, че няма да има повече от 3 на ред */
+}
+
+/* Анимация при hover */
+.faq-item:hover {
+    transform: scale(1.05);
+}
+
+/* Заглавия на въпросите */
+.faq-item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Текст */
+.faq-item p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+/* 📱 Адаптивност за мобилни устройства */
+@media (max-width: 992px) {
+    .faq-item {
+        flex: 1 1 45%; /* Два контейнера на ред при средни екрани */
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 600px) {
+    .faq-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .faq-item {
+        width: 90%;
+        max-width: 90%;
+    }
+}
+
+
+
+
+
+
+
+.tattoo-styles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 5%;
+}
+
+.style-item {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 48%;
+    min-height: 200px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.style-item:hover {
+    transform: scale(1.05);
+}
+
+.style-item img {
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+}
+
+.style-text {
+    padding: 20px;
+    width: 50%;
+    text-align: center;
+}
+
+.style-text h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #ffcc00;
+}
+
+.style-text p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* 📱 За мобилни устройства */
+@media (max-width: 768px) {
+    .style-item {
+        flex-direction: column;
+        width: 90%;
+        text-align: center;
+    }
+
+    .style-item img {
+        width: 100%;
+    }
+
+    .style-text {
+        width: 100%;
+    }
+}
+
+
+.fade-in2 {
+    opacity: 0; /* Първоначално скрита */
+    animation: fadeIn 1.5s ease-in forwards;
+    animation-delay: 1.5s; /* Забавяне от 1 секундa */
+  }

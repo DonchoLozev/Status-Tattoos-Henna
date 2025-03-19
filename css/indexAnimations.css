@@ -1,0 +1,221 @@
+
+
+.img-left {
+    transform: translateX(-100%); /* Започва извън екрана отляво */
+    animation: slideInLeft 1s ease-out forwards;
+  }
+  
+  .img-right {
+    transform: translateX(100%); /* Започва извън екрана отдясно */
+    animation: slideInRight 1s ease-out forwards;
+  }
+  /* Анимации */
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .fade-in {
+    opacity: 0; /* Първоначално скрита */
+    animation: fadeIn 1.5s ease-in forwards;
+    animation-delay: 1s; /* Забавяне от 1 секундa */
+  }
+  .fade-in2 {
+    opacity: 0; /* Първоначално скрита */
+    animation: fadeIn 1.5s ease-in forwards;
+    animation-delay: 1.5s; /* Забавяне от 1 секундa */
+  }
+  
+  /* Анимация */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .checklist-container {
+    background-color: black; /* Черен фон */
+    color: white; /* Бял текст */
+    padding: 20px;
+    border-radius: 10px; /* Закръглени ъгли */
+    border: 1px solid #fbd285; /* Бял контур */
+    max-width: 400px; /* Максимална ширина */
+    
+    /* Центриране на блока */
+    margin-top: 3%;
+    margin: 0 auto;
+    text-align: center; /* Центриране на текста */
+    line-height: 2;
+}
+
+/* Стил за списъка */
+.custom-checklist {
+    list-style: none; /* Премахва стандартните булети */
+    padding: 0;
+    display: inline-block; /* За да остане центриран вътре в контейнера */
+    text-align: left; /* Запазва подравняването на текста */
+}
+
+/* Стил за всяко тикче */
+.custom-checklist li {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 4.5px 0;
+    position: relative;
+    
+}
+
+/* Подчертаване на иконата с тик */
+.custom-checklist li::before {
+    content: "✔"; /* Символ за тик */
+    color: #fbd285; /* Златист цвят */
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    left: -30px;
+    top: 3px;
+}
+
+.mycontainerIndex {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Разстояние между снимките */
+    flex-wrap: wrap; /* Позволява пренасяне на нов ред при малки екрани */
+}
+
+/* Контейнер за всяка снимка + текст */
+.image-container {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Подрежда заглавието над снимката */
+    align-items: center; /* Центрира елементите хоризонтално */
+    transition: transform 0.3s ease-in-out;
+    width: 650px; /* Фиксирана ширина */
+    height: 600px; /* Автоматична височина */
+}
+
+/* Стил за заглавията */
+.image-container h1 {
+    margin-bottom: 15px; /* Разстояние между текста и снимката */
+    text-align: center; /* Центриране на текста */
+    width: 100%; /* Широчина, за да не се измества */
+}
+
+/* Стил за снимките */
+.hover-image {
+    width: 700px; /* Запазва пропорциите */
+    height: 600px; /* Запълва контейнера */
+    object-fit: cover; /* Подрязва снимката така, че да запази пропорциите си */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Ефект при hover */
+.image-container:hover .hover-image {
+    transform: scale(1.1); /* Уголемяване с 10% */
+}
+
+/* Отзивчив дизайн за мобилни устройства */
+@media (max-width: 768px) {
+    .mycontainerIndex {
+        flex-direction: column; /* Подрежда снимките вертикално */
+        align-items: center; /* Центрира съдържанието */
+        gap: 30px; /* Намалява разстоянието */
+    }
+
+    .image-container {
+        width: 700px; /* Фиксирана ширина */
+    }
+}
+
+
+
+
+
+
+
+.arrow-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: -200px; /* Разстояние между логото и стрелките */
+}
+
+.arrow {
+    width: 40px;
+    height: 40px;
+    border-right: 5px solid white;
+    border-bottom: 5px solid white;
+    transform: rotate(45deg);
+    margin: 5px;
+    animation: arrow-move 1.5s infinite;
+}
+
+.arrow:nth-child(2) {
+    animation-delay: 0.3s; /* Леко забавяне на втората стрелка */
+}
+
+@keyframes arrow-move {
+    0% { transform: rotate(45deg) translateY(0); opacity: 1; }
+    50% { transform: rotate(45deg) translateY(10px); opacity: 0.6; }
+    100% { transform: rotate(45deg) translateY(0); opacity: 1; }
+}
+
+
+.title {
+    color: #fbd285;
+    font-family: 'Times New Roman', serif;
+    font-size: 65px;
+}
+
+.subtitle {
+    color: #fbd285;
+    font-family: 'Times New Roman', serif;
+    font-size: 24px;
+}
+
+.separator {
+    color: #fbd285;
+    width: 80%;
+    height: 3px;
+    margin: 40px auto;
+}
+
+/* 🔹 Адаптивност за мобилни устройства */
+@media (max-width: 768px) {
+    .content {
+        margin-top: 15%; /* Увеличаваме разстоянието за по-добра видимост */
+    }
+
+    .title {
+        font-size: 40px; /* Намалява заглавието на мобилни */
+    }
+
+    .subtitle {
+        font-size: 18px; /* Намалява подзаглавието */
+    }
+
+    .separator {
+        width: 90%; /* По-широка линия за мобилни */
+    }
+}

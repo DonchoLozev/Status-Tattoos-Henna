@@ -1,0 +1,313 @@
+/* Нулиране на стиловете */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    
+}
+
+/* Основен контейнер */
+.split-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 100vh; /* Променено от height: 100vh */
+}
+
+
+
+/* Лявата страна със снимка */
+.left-side {
+    width: 50%;
+    height: 100vh; /* Покрива цялата височина */
+}
+
+.left-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Дясна страна с текст и ЧЕРЕН фон */
+.right-side {
+    width: 50%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.right-side h1 {
+    font-size: 80px;
+    font-weight: bold;
+    color: #ffffff; /* Бял текст за контраст */
+    text-transform: uppercase;
+    font-family: 'Times New Roman', serif;
+}
+
+/* 📱 Адаптивност за мобилни устройства */
+@media (max-width: 768px) {
+    .split-container {
+        flex-direction: column; /* Променяме на вертикално разпределение */
+    }
+
+    .left-side, .right-side {
+        width: 100%;
+        height: 50vh; /* Разделяме екрана по височина */
+    }
+
+    .right-side h1 {
+        font-size: 50px; /* Намаляваме текста на по-малки екрани */
+    }
+}
+
+
+.img-left {
+    transform: translateX(-100%); /* Започва извън екрана отляво */
+    animation: slideInLeft 1s ease-out forwards;
+  }
+  
+  .img-right {
+    transform: translateX(100%); /* Започва извън екрана отдясно */
+    animation: slideInRight 1s ease-out forwards;
+  }
+  /* Анимации */
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .fade-in {
+    opacity: 0; /* Първоначално скрита */
+    animation: fadeIn 1.5s ease-in forwards;
+    animation-delay: 1s; /* Забавяне от 1 секундa */
+  }
+  
+  /* Анимация */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+
+/* Контейнер за стрелките */
+.arrow-container {
+    position: absolute; /* Остава фиксиран в секцията */
+    bottom: 30px; /* Долу в секцията */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+/* Стрелки (бели, оформени като V-образни стрелки) */
+.arrow {
+    width: 40px;
+    height: 40px;
+    border-right: 6px solid white;
+    border-bottom: 6px solid white;
+    transform: rotate(45deg);
+    margin: 8px;
+    animation: arrow-move 1.5s infinite ease-in-out;
+}
+
+/* Анимация: движение само НАДОЛУ */
+@keyframes arrow-move {
+    0% { transform: rotate(45deg) translateY(0); opacity: 1; }
+    50% { transform: rotate(45deg) translateY(15px); opacity: 0.5; } /* Пада надолу */
+    100% { transform: rotate(45deg) translateY(0); opacity: 1; }
+}
+
+.fade-in2 {
+    opacity: 0; /* Първоначално скрита */
+    animation: fadeIn 1.5s ease-in forwards;
+    animation-delay: 1.5s; /* Забавяне от 1 секундa */
+  }
+
+  /* Контейнер за текста и логото в дясната част */
+.text-logo-container {
+    display: flex;
+    align-items: center; /* Подравнява елементите по височина */
+    justify-content: center; /* Центрира в контейнера */
+    gap: 40px; /* Разстояние между текста и логото */
+}
+
+/* Корекция за логото, за да е вдясно от текста */
+.logo-right {
+    max-width: 300px; /* Намалява размера на логото, можеш да коригираш */
+    height: auto;
+}
+
+
+.checklist-container {
+    background-color: black; /* Черен фон */
+    color: white; /* Бял текст */
+    padding: 20px;
+    border-radius: 10px; /* Закръглени ъгли */
+    border: 1px solid #fbd285; /* Бял контур */
+    max-width: 400px; /* Максимална ширина */
+    
+    /* Центриране на блока */
+    margin-top: 3%;
+    margin: 0 auto;
+    text-align: center; /* Центриране на текста */
+    line-height: 2;
+}
+
+/* Стил за списъка */
+.custom-checklist {
+    list-style: none; /* Премахва стандартните булети */
+    padding: 0;
+    display: inline-block; /* За да остане центриран вътре в контейнера */
+    text-align: left; /* Запазва подравняването на текста */
+}
+
+/* Стил за всяко тикче */
+.custom-checklist li {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 4.5px 0;
+    position: relative;
+    
+}
+
+/* Подчертаване на иконата с тик */
+.custom-checklist li::before {
+    content: ">"; /* Символ за тик */
+    color: #fbd285; /* Златист цвят */
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    left: -15px;
+    top: 3px;
+}
+
+
+.tattoo-styles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 5%;
+}
+
+.style-item {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 48%;
+    min-height: 200px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.style-item:hover {
+    transform: scale(1.05);
+}
+
+.style-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Гарантира, че изображението ще запълни контейнера */
+}
+
+.style-text {
+    padding: 20px;
+    width: 50%;
+    text-align: center;
+}
+
+.style-text h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #ffcc00;
+}
+
+.style-text p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+
+/* Контейнер за изображенията */
+.henna-stages {
+    margin-top: -5%;
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Разстояние между снимките */
+    padding: 50px 0;
+    flex-wrap: wrap; /* Позволява пренасяне на нов ред при малки екрани */
+}
+
+/* Всеки контейнер за снимка и текст */
+.image-container {
+    text-align: center;
+    width: 30%; /* Процентно разпределение за адаптивност */
+    min-width: 250px; /* Минимална ширина */
+}
+
+/* Самите изображения */
+.image-container img {
+    width: 100%; /* Запълва целия контейнер */
+    height: 500px; /* Фиксирана височина за всички */
+    object-fit: cover; /* Подрязва и центрира изображението */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Текст под снимките */
+.image-container p {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Адаптивност за мобилни устройства */
+@media (max-width: 768px) {
+    .henna-stages {
+        flex-direction: column; /* Подрежда снимките вертикално */
+        align-items: center;
+    }
+
+    .image-container {
+        width: 80%; /* Заема повече ширина на екрана */
+    }
+
+    .image-container img {
+        height: 400px; /* Малко по-малка височина за мобилни устройства */
+    }
+}
